@@ -13,7 +13,7 @@
 <script>
 import Reveal from "reveal.js";
 export default {
-  name: "Home",
+  name: "test",
   components: {},
   mounted() {
     const RevealInstance = new Reveal();
