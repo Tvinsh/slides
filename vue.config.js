@@ -18,7 +18,6 @@ module.exports = {
   chainWebpack() {},
   devServer: {
     host: "127.0.0.1",
-    port: 80,
-    allowedHosts: ["dev.mms.com"]
+    port: 80
   }
 };
