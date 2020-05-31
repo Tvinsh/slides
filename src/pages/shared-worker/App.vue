@@ -37,38 +37,6 @@
             ]
           </code></pre>
         </section>
-        <section data-markdown>
-          <textarea data-template>
-            ```js
-              // 业务页面
-              if (window.SharedWorker) {
-                const worker = new SharedWorker('./worker', { type: 'module' });
-                worker.port.onmessage = ({ data }) => {
-                  ...
-                };
-                worker.port.postMessage('start');
-              }
-              
-              // worker.js
-              // 共用逻辑可以写在 onconnect 外面
-              onconnect = (e) => {
-                const port = e.ports[0];
-                ...
-                port.postMessage(...);
-                port.onmessage = ({ data }) => {
-                  ...
-                };
-              }
-              
-              // 插件使用
-              plugins: [
-                new WorkerPlugin({
-                  globalObject: 'self'
-                })
-              ]
-            ```
-          </textarea>
-        </section>
       </section>
     </div>
   </div>
