@@ -62,25 +62,40 @@
           </p>
         </section>
         <section>
+          <pre><code data-trim data-noescape>
+            var WorkerPlugin = function WorkerPlugin (options) {
+              ...
+            };
+            WorkerPlugin.prototype.apply = function apply (compiler) {
+              ...
+				    };
+            module.exports = WorkerPlugin;
+          </code></pre>
+        </section>
+        <section>
           <p class="container-16">
-            一个 loader 运行的大致流程：
+            一个 loader 在整个 webpack 的 workflow 过程中出现的时机：
           </p>
           <p class="container-16">
             • 初始阶段将用户配置与默认配置合并
           </p>
           <p class="container-16">
             • 在 webpack 通过 NormalModuleFactory 创建 NormalModule
-            实例前解析相关路径等
+            实例前解析相关配置，比如路径
           </p>
           <p class="container-16">
             • 将loader处理完的模块内容输出，进入后续的编译流程
           </p>
         </section>
         <section>
-          <img src="../../assets/loader.png" />
+          <img class="container-loader" src="../../assets/loader.png" />
         </section>
         <section>
           <p class="container-16">
+            在一个 module 构建过程中，首先根据 module 的依赖类型(例如
+            <a href="https://v4.webpack.js.org/api/parser/" target="_blank"
+              >NormalModuleFactory</a
+            >)调用对应的构造函数来创建对应的模块；<br />
             在NormalModuleFactory中，创建出NormalModule实例之前会涉及到四个钩子：
           </p>
           <p class="container-16">
@@ -224,6 +239,9 @@ export default {
   }
   &-red {
     color: red;
+  }
+  &-loader {
+    width: 60%;
   }
 }
 </style>
